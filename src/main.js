@@ -2,10 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import { routes } from './routes'
+import axios from 'axios'
 
 
 // 配置默认根路径
-
+axios.defaults.baseURL = 'https://wd5781997662vdkstn.wilddogio.com/'
 
 // 配置Vue原型 (在任何组件中都可以正常使用axios)
 
