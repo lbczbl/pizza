@@ -7,8 +7,6 @@
             <button @click="goToMenu" class="btn btn-success">Let's order!</button>
         </div>
     </div>
-    <h1>Home</h1>
-    <button @click ="goToMenu" class="btn btn-success">Let's order</button>
 </div>
 </template>
 
@@ -26,7 +24,7 @@ export default {
             // this.$router.replace({name:'menuLink'})
 
             //通过push进行跳转
-            this.$router.push('/menu')
+            this.$router.push({name:'menuLink'})
         }
     }
 }

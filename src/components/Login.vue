@@ -36,6 +36,14 @@ export default {
           
         }
     },
+    //组件内的守卫
+    beforeRouteEnter: (to, from, next) => {
+      // this.$store.dispatch("setUser",null)
+      next(vm => {
+        vm.$store.dispatch("setUser",null)
+        vm.$store.dispatch('setLogin', false)
+      })
+    },
     methods:{
         onSubmit(){
           axios.get('/users.json')
@@ -53,9 +61,14 @@ export default {
              })
              //判断result的长度是否大于0
              if(result !=null && result.length > 0){
-                 this.$router.push({name:"homeLink"})
+                this.$store.dispatch("setUser",result[0].email)
+                this.$router.push({name:"homeLink"})
+                this.$store.dispatch('setLogin', true)
              }else{
                  alert("账号或密码错误！")
+                 //dispatch含有异步操作，例如向后台提交数据
+                 this.$store.dispatch("setUser",null)
+                 this.$store.dispatch('setLogin', false)
              }
           })  
         }
